@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="HomeTableViewHeaderView" customModule="CollectionViewApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="381" height="60"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pnf-Mz-vIy">
+                    <rect key="frame" x="0.0" y="0.0" width="381" height="60"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vNA-0s-025">
+                            <rect key="frame" x="8" y="31" width="120" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="120" id="PkH-Sf-D48"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="vNA-0s-025" secondAttribute="bottom" constant="8" id="L8j-QL-v0L"/>
+                        <constraint firstItem="vNA-0s-025" firstAttribute="leading" secondItem="pnf-Mz-vIy" secondAttribute="leading" constant="8" id="vr1-up-86d"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="pnf-Mz-vIy" secondAttribute="bottom" id="EAr-yh-Yyp"/>
+                <constraint firstItem="pnf-Mz-vIy" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Ngq-j5-bVx"/>
+                <constraint firstItem="pnf-Mz-vIy" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="WMe-mk-YFj"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="pnf-Mz-vIy" secondAttribute="trailing" id="sxB-9W-Hce"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="categoryNameLabel" destination="vNA-0s-025" id="TTp-nO-90E"/>
+            </connections>
+            <point key="canvasLocation" x="143.19999999999999" y="-122.33883058470765"/>
+        </view>
+    </objects>
+</document>
