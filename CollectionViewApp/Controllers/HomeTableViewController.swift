@@ -10,7 +10,6 @@ import UIKit
 class HomeTableViewController: UITableViewController {
     
     let tableViewCellIdentifier = "Cell"
-    var sections: [String] = ["Ficción", "Documentales", "Comedia"]
 
     var categorias: [Categoria] = [Categoria.init(title: "Comedia", movies:[Movie.init(id: 1, title: "wepldl", description: "WWW"),
                                                                              Movie.init(id: 2, title: "dsadsad", description: "WWW2")]),
@@ -26,6 +25,10 @@ class HomeTableViewController: UITableViewController {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "HomeTableViewHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "HomeTableViewHeader")
         
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
 
 
