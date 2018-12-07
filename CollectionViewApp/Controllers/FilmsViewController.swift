@@ -17,19 +17,19 @@ class FilmsViewController: UIViewController {
     
     
     var filmsHigh = ["film1","film2"]
-    var categorias: [Categoria] = [Categoria.init(title: "Comedia", movies:[Movie.init(id: 1, title: "wepldl", description: "WWW"),
-                                                                            Movie.init(id: 2, title: "dsadsad", description: "WWW2")]),
-                                   Categoria.init(title: "Comedia", movies:[Movie.init(id: 1, title: "wepldl", description: "WWW"),
-                                                                            Movie.init(id: 2, title: "dsadsad", description: "WWW2")]),
-                                   Categoria.init(title: "Comedia", movies:[Movie.init(id: 1, title: "wepldl", description: "WWW"),
-                                                                            Movie.init(id: 2, title: "dsadsad", description: "WWW2")]),
-                                   Categoria.init(title: "Ficción", movies:[Movie.init(id: 1, title: "TITLE1", description: "WWW"),
-                                                                             Movie.init(id: 2, title: "2TITLE1", description: "WWW2")]),
-                                   Categoria.init(title: "Documentales", movies: [Movie.init(id: 3, title: "jeje", description: "WWW"),
-                                                                                  Movie.init(id: 3, title: "1jeje", description: "WWW"),
-                                                                                  Movie.init(id: 3, title: "21jeje", description: "WWW"),
-                                                                                  Movie.init(id: 3, title: "41jeje", description: "WWW"),
-                                                                                  Movie.init(id: 4, title: "jeejj", description: "WWW2")])]
+    var categorias: [Categoria] = [Categoria.init(title: "Comedia", movies:[Movie.init(id: 1, title: "wepldl", description: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"),
+                                                                            Movie.init(id: 2, title: "dsadsad", description: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4")]),
+                                   Categoria.init(title: "Comedia", movies:[Movie.init(id: 1, title: "wepldl", description: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"),
+                                                                            Movie.init(id: 2, title: "dsadsad", description: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4")]),
+                                   Categoria.init(title: "Comedia", movies:[Movie.init(id: 1, title: "wepldl", description: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"),
+                                                                            Movie.init(id: 2, title: "dsadsad", description: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4")]),
+                                   Categoria.init(title: "Ficción", movies:[Movie.init(id: 1, title: "TITLE1", description: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"),
+                                                                             Movie.init(id: 2, title: "2TITLE1", description: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4")]),
+                                   Categoria.init(title: "Documentales", movies: [Movie.init(id: 3, title: "jeje", description: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"),
+                                                                                  Movie.init(id: 3, title: "1jeje", description: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"),
+                                                                                  Movie.init(id: 3, title: "21jeje", description: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"),
+                                                                                  Movie.init(id: 3, title: "41jeje", description: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"),
+                                                                                  Movie.init(id: 4, title: "jeejj", description: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4")])]
     override func viewDidLoad() {
         super.viewDidLoad()
         self.filmsTableView.register(UINib(nibName: "FilmTableViewHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "FilmTableViewHeader")
@@ -62,6 +62,7 @@ extension FilmsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FilmCell", for: indexPath) as! FilmTableViewCell
         cell.categoria = categorias[indexPath.section]
+        cell.delegate = self
         return cell
     }
     
@@ -85,6 +86,12 @@ extension FilmsViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! HighlightCollectionViewCell
         cell.highlightImageView.image = UIImage(named: filmsHigh[indexPath.row])
         return cell
+    }
+}
+
+extension FilmsViewController: ChangePictureProtocol {
+    func loadNewScreen(controller: UIViewController) {
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     

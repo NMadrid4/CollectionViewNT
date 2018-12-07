@@ -7,9 +7,14 @@
 
 import UIKit
 
+protocol ChangePictureProtocol : NSObjectProtocol {
+    func loadNewScreen(controller: UIViewController) -> Void;
+}
+
 class FilmTableViewCell: UITableViewCell {
     
     @IBOutlet weak var filmCollectionView: UICollectionView!
+    var delegate: ChangePictureProtocol?
     var categoria: Categoria? {
         didSet {
             filmCollectionView.reloadData()
@@ -29,7 +34,7 @@ class FilmTableViewCell: UITableViewCell {
 
 }
 
-extension FilmTableViewCell: UICollectionViewDataSource {
+extension FilmTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return categoria?.movies.count ?? 0
     }
@@ -40,5 +45,11 @@ extension FilmTableViewCell: UICollectionViewDataSource {
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let messagesViewController = storyboard.instantiateViewController(withIdentifier: "MovieDetailVC") as! MovieDetailViewController
+        messagesViewController.urlMovie = categoria?.movies[indexPath.row].description
+        delegate?.loadNewScreen(controller: messagesViewController)
+    }
     
 }

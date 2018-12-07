@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVKit
 
 class HomeTableViewCell: UITableViewCell {
 
@@ -19,7 +20,7 @@ class HomeTableViewCell: UITableViewCell {
     
 }
 
-extension HomeTableViewCell: UICollectionViewDataSource {
+extension HomeTableViewCell: UICollectionViewDataSource{
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -34,4 +35,5 @@ extension HomeTableViewCell: UICollectionViewDataSource {
         return cell
     }
     
+
 }

@@ -23,6 +23,7 @@
 		912AA7A621B9BBF000EF8E8D /* FilmTableViewHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 912AA7A521B9BBF000EF8E8D /* FilmTableViewHeaderView.xib */; };
 		912AA7A821B9BE9B00EF8E8D /* FilmCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912AA7A721B9BE9B00EF8E8D /* FilmCollectionViewCell.swift */; };
 		912AA7AB21B9BF7300EF8E8D /* HighlightCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912AA7AA21B9BF7300EF8E8D /* HighlightCollectionViewCell.swift */; };
+		91CE535121BADD4F00BCEDE5 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CE535021BADD4F00BCEDE5 /* MovieDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		912AA7A521B9BBF000EF8E8D /* FilmTableViewHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilmTableViewHeaderView.xib; sourceTree = "<group>"; };
 		912AA7A721B9BE9B00EF8E8D /* FilmCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmCollectionViewCell.swift; sourceTree = "<group>"; };
 		912AA7AA21B9BF7300EF8E8D /* HighlightCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightCollectionViewCell.swift; sourceTree = "<group>"; };
+		91CE535021BADD4F00BCEDE5 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 			children = (
 				912AA76021B9737300EF8E8D /* HomeTableViewController.swift */,
 				912AA79D21B9BA9300EF8E8D /* FilmsViewController.swift */,
+				91CE535021BADD4F00BCEDE5 /* MovieDetailViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 				912AA77B21B981FB00EF8E8D /* FeedMovie.swift in Sources */,
 				912AA77921B97FF600EF8E8D /* HomeCollectionViewCell.swift in Sources */,
 				912AA7A421B9BBD800EF8E8D /* FilmTableViewHeaderView.swift in Sources */,
+				91CE535121BADD4F00BCEDE5 /* MovieDetailViewController.swift in Sources */,
 				912AA77521B9774700EF8E8D /* HomeTableViewHeaderView.swift in Sources */,
 				912AA77321B975CF00EF8E8D /* HomeTableViewCell.swift in Sources */,
 				912AA7A821B9BE9B00EF8E8D /* FilmCollectionViewCell.swift in Sources */,
