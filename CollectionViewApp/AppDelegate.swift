@@ -13,6 +13,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        if url.host! as String == "hola1"{
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let movievc = storyboard.instantiateViewController(withIdentifier: "filmVC") as! FilmsViewController
+            movievc.index = 1
+            movievc.showDetail = true
+            let nav = UINavigationController(rootViewController: movievc)
+            window?.rootViewController = nav
+        }
+        return true
+    }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         return true

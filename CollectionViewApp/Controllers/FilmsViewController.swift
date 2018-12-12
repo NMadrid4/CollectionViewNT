@@ -15,8 +15,10 @@ class FilmsViewController: UIViewController {
     @IBOutlet weak var resizableHeightConstant: NSLayoutConstraint!
     @IBOutlet weak var scrollView: UIScrollView!
     
+    var showDetail = false
+    var index: Int?
     
-    var filmsHigh = ["film1","film2"]
+    var filmsHigh = ["img_f1","img_f1"]
     var categorias: [Categoria] = [Categoria.init(title: "Comedia", movies:[Movie.init(id: 1, title: "wepldl", description: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"),
                                                                             Movie.init(id: 2, title: "dsadsad", description: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4")]),
                                    Categoria.init(title: "Comedia", movies:[Movie.init(id: 1, title: "wepldl", description: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"),
@@ -34,6 +36,24 @@ class FilmsViewController: UIViewController {
         super.viewDidLoad()
         self.filmsTableView.register(UINib(nibName: "FilmTableViewHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "FilmTableViewHeader")
         self.scrollView.isScrollEnabled = false
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = true
+        if showDetail == true {
+            if let index = index {
+                let messagesViewController = storyboard?.instantiateViewController(withIdentifier: "MovieDetailVC") as! MovieDetailViewController
+                messagesViewController.urlMovie = categorias[index].movies.filter({$0.id == index}).first?.description
+                self.navigationController?.pushViewController(messagesViewController, animated: false)
+            }
+        }
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.navigationBar.isHidden = false
     }
     
     override func viewWillLayoutSubviews() {

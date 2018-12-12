@@ -11,15 +11,15 @@ import AVKit
 class MovieDetailViewController: UIViewController {
 
     var urlMovie: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
-        // Do any additional setup after loading the view.
+        print(urlMovie)
     }
     
     @IBAction func playVideoAction(_ sender: Any) {
         if let urlMovie = urlMovie {
+            
             let urlVideo = URL(string: urlMovie)!
             let video = AVPlayer(url: urlVideo)
             let videoPlayer = AVPlayerViewController()
