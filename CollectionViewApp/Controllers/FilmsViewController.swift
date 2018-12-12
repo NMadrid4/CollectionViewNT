@@ -17,21 +17,22 @@ class FilmsViewController: UIViewController {
     
     var showDetail = false
     var index: Int?
+    var movieId: Int?
     
     var filmsHigh = ["img_f1","img_f1"]
     var categorias: [Categoria] = [Categoria.init(title: "Comedia", movies:[Movie.init(id: 1, title: "wepldl", description: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"),
                                                                             Movie.init(id: 2, title: "dsadsad", description: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4")]),
-                                   Categoria.init(title: "Comedia", movies:[Movie.init(id: 1, title: "wepldl", description: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"),
-                                                                            Movie.init(id: 2, title: "dsadsad", description: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4")]),
-                                   Categoria.init(title: "Comedia", movies:[Movie.init(id: 1, title: "wepldl", description: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"),
-                                                                            Movie.init(id: 2, title: "dsadsad", description: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4")]),
-                                   Categoria.init(title: "Ficción", movies:[Movie.init(id: 1, title: "TITLE1", description: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"),
-                                                                             Movie.init(id: 2, title: "2TITLE1", description: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4")]),
-                                   Categoria.init(title: "Documentales", movies: [Movie.init(id: 3, title: "jeje", description: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"),
-                                                                                  Movie.init(id: 3, title: "1jeje", description: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"),
-                                                                                  Movie.init(id: 3, title: "21jeje", description: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"),
-                                                                                  Movie.init(id: 3, title: "41jeje", description: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"),
-                                                                                  Movie.init(id: 4, title: "jeejj", description: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4")])]
+                                   Categoria.init(title: "Comedia", movies:[Movie.init(id: 3, title: "wepldl", description: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"),
+                                                                            Movie.init(id: 4, title: "dsadsad", description: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4")]),
+                                   Categoria.init(title: "Comedia", movies:[Movie.init(id: 5, title: "wepldl", description: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"),
+                                                                            Movie.init(id: 6, title: "dsadsad", description: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4")]),
+                                   Categoria.init(title: "Ficción", movies:[Movie.init(id: 7, title: "TITLE1", description: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"),
+                                                                             Movie.init(id: 8, title: "2TITLE1", description: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4")]),
+                                   Categoria.init(title: "Documentales", movies: [Movie.init(id: 9, title: "jeje", description: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"),
+                                                                                  Movie.init(id: 10, title: "1jeje", description: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"),
+                                                                                  Movie.init(id: 11, title: "21jeje", description: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"),
+                                                                                  Movie.init(id: 12, title: "41jeje", description: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"),
+                                                                                  Movie.init(id: 13, title: "jeejj", description: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4")])]
     override func viewDidLoad() {
         super.viewDidLoad()
         self.filmsTableView.register(UINib(nibName: "FilmTableViewHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "FilmTableViewHeader")
@@ -43,12 +44,14 @@ class FilmsViewController: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
         if showDetail == true {
             if let index = index {
-                let messagesViewController = storyboard?.instantiateViewController(withIdentifier: "MovieDetailVC") as! MovieDetailViewController
-                messagesViewController.urlMovie = categorias[index].movies.filter({$0.id == index}).first?.description
-                self.navigationController?.pushViewController(messagesViewController, animated: false)
+                if self.categorias.count >= index {
+                    let messagesViewController = storyboard?.instantiateViewController(withIdentifier: "MovieDetailVC") as! MovieDetailViewController
+                    messagesViewController.urlMovie = categorias[index].movies.filter({$0.id == movieId}).first?.description
+                    self.navigationController?.pushViewController(messagesViewController, animated: false)
+                    self.showDetail = false
+                }
             }
         }
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {

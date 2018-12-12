@@ -14,13 +14,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-        if url.host! as String == "hola1"{
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let movievc = storyboard.instantiateViewController(withIdentifier: "filmVC") as! FilmsViewController
-            movievc.index = 1
-            movievc.showDetail = true
-            let nav = UINavigationController(rootViewController: movievc)
-            window?.rootViewController = nav
+        if (url.absoluteString.contains("hola/")){
+            let newstr = url.absoluteString.split(separator: "/")
+//            print(newstr)
+            if newstr.count > 2 {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let movievc = storyboard.instantiateViewController(withIdentifier: "filmVC") as! FilmsViewController
+                movievc.index = Int(newstr[2])
+                movievc.showDetail = true
+                movievc.movieId = Int(newstr[3])
+                let nav = UINavigationController(rootViewController: movievc)
+                window?.rootViewController = nav
+            }
         }
         return true
     }
